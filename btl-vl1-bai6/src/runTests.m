@@ -57,14 +57,18 @@ for i = 1:n
   
    else
        % TC07 - TC08: Kiem tra du lieu khong hop le
-       hasError = false;
+       % Ket qua mong doi: CA HAI ham deu tu choi du lieu (bao loi kiem tra
+       % dau vao). Loi he thong cua MATLAB (ma loi 'MATLAB:...', vi du goi
+       % sai so tham so) khong duoc tinh la tu choi hop le.
+       solveRejected = false;
+       calcRejected = false;
        % Kiem tra ham solveAngleSymbolic
        try
            solveAngleSymbolic(Alpha1(i), V0(i), g);
        catch ME
            fprintf('TC%02d - solveAngleSymbolic: %s\n', ...
                i, ME.message);
-           hasError = true;
+           solveRejected = ~strncmp(ME.identifier, 'MATLAB:', 7);
        end
        % Kiem tra ham calculateProjectile
        try
@@ -72,13 +76,13 @@ for i = 1:n
        catch ME
            fprintf('TC%02d - calculateProjectile: %s\n', ...
                i, ME.message);
-           hasError = true;
+           calcRejected = ~strncmp(ME.identifier, 'MATLAB:', 7);
        end
-       % Neu co bat ky ham nao bao loi thi FAIL
-       if hasError
-           Status(i) = "FAIL";
-       else
+       % PASS khi ca hai ham deu bao loi dau vao; nguoc lai la FAIL
+       if solveRejected && calcRejected
            Status(i) = "PASS";
+       else
+           Status(i) = "FAIL";
        end
    end
 end
