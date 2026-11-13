@@ -1,0 +1,14 @@
+# MATLAB: file tự lưu / sao lưu của Editor
+*.asv
+*.m~
+*.autosave
+
+# MATLAB: file sinh ra khi chạy
+*.mex*
+slprj/
+codegen/
+octave-workspace
+
+# Hệ điều hành
+.DS_Store
+Thumbs.db
