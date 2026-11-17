@@ -40,7 +40,7 @@ btl-vl1-bai6/
 | `solveAngleSymbolic.m` | TV4 – Gia Bảo | Giải `sin(2α2) = sin(2α1)` bằng Symbolic Math Toolbox, lọc nghiệm trong `(0°, 90°)`. |
 | `calculateProjectile.m` | TV5 – Gia Lộc | Tính `T`, `H`, `R` và 500 điểm tọa độ `(x, y)` của quỹ đạo. |
 | `plotTrajectories.m` | Tích hợp | Vẽ hai quỹ đạo trên cùng hệ trục (cùng tỉ lệ hai trục), lưu PNG 300 DPI. |
-| `runTests.m` | TV7 – Duy Quang | Bộ 8 ca kiểm thử, báo cáo PASS/FAIL và phân tích sai số `|R1 − R2|`. |
+| `runTests.m` | TV7 – Duy Quang | Bộ 8 ca kiểm thử, báo cáo PASS/FAIL và phân tích sai số tầm xa giữa hai vật. |
 | `chaythudoclap_solveAngleSymbolic.m` | TV4 – Gia Bảo | Chạy thử `solveAngleSymbolic` với 2 ví dụ mẫu (30° và 45°). |
 | `app/VL1.m` | TV6 – Đăng Khôi | Lớp ứng dụng App Designer: chọn `α1` bằng thanh trượt, vẽ động hai quỹ đạo. |
 
