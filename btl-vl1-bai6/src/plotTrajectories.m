@@ -69,11 +69,32 @@ function fig = plotTrajectories(v0, alpha1_deg, alpha2_deg, g, outFile)
 
     % 6. Chú giải: góc ném và thời gian bay của từng vật
     %    (đặt ngoài vùng vẽ để không che quỹ đạo)
-    legend(ax, [h1, h2, hThrow, hLand], { ...
+    lgd = legend(ax, [h1, h2, hThrow, hLand], { ...
         sprintf('Vật 1: \\alpha_1 = %.2f°, T_1 = %.2f s', alpha1_deg, T1), ...
         sprintf('Vật 2: \\alpha_2 = %.2f°, T_2 = %.2f s', alpha2_deg, T2), ...
         'Vị trí ném', 'Vị trí rơi'}, 'Location', 'eastoutside');
     hold(ax, 'off');
+
+    % Ép giao diện sáng (nền trắng, chữ đen) để hình xuất ra luôn đọc được,
+    % kể cả khi MATLAB đang dùng chế độ Dark theme.
+    try
+        ax.Color = 'w';
+        ax.XColor = 'k';
+        ax.YColor = 'k';
+        ax.GridColor = 'k';
+        ax.GridAlpha = 0.15;
+        ax.Title.Color = 'k';
+        ax.XLabel.Color = 'k';
+        ax.YLabel.Color = 'k';
+        lgd.Color = 'w';
+        lgd.TextColor = 'k';
+        lgd.EdgeColor = [0.15 0.15 0.15];
+        if sameAngle
+            set(findobj(ax, 'Type', 'text'), 'Color', 'k');
+        end
+    catch
+        % Phiên bản không hỗ trợ các thuộc tính trên: giữ nguyên mặc định
+    end
 
     % 7. Lưu hình 300 DPI (nếu có yêu cầu)
     if ~isempty(outFile)

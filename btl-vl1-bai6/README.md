@@ -25,8 +25,10 @@ btl-vl1-bai6/
 │   ├── plotTrajectories.m
 │   ├── runTests.m
 │   └── chaythudoclap_solveAngleSymbolic.m
-├── app/                      Giao diện App Designer (chưa đủ file để chạy)
-│   └── VL1.m
+├── app/                      Giao diện App Designer (mở app/VL1_1.m)
+│   ├── VL1_1.m
+│   ├── VL1_1.xml             Bố cục giao diện, phải nằm cùng thư mục với VL1_1.m
+│   └── _ban_cu/              Bản cũ VL1.m + VL1.xml (không dùng nữa)
 └── figures/                  Hình quỹ đạo do main.m lưu ra
     └── quydao_v0_20_alpha1_30.png
 ```
@@ -42,7 +44,7 @@ btl-vl1-bai6/
 | `plotTrajectories.m` | Tích hợp | Vẽ hai quỹ đạo trên cùng hệ trục (cùng tỉ lệ hai trục), lưu PNG 300 DPI. |
 | `runTests.m` | TV7 – Duy Quang | Bộ 8 ca kiểm thử, báo cáo PASS/FAIL và phân tích sai số `|R1 − R2|`. |
 | `chaythudoclap_solveAngleSymbolic.m` | TV4 – Gia Bảo | Chạy thử `solveAngleSymbolic` với 2 ví dụ mẫu (30° và 45°). |
-| `app/VL1.m` | TV6 – Đăng Khôi | Lớp ứng dụng App Designer: chọn `α1` bằng thanh trượt, vẽ động hai quỹ đạo. |
+| `app/VL1_1.m` | TV6 – Đăng Khôi | Lớp ứng dụng App Designer: chọn `α1` bằng thanh trượt, vẽ động hai quỹ đạo, đánh dấu đỉnh và điểm rơi. Gọi `solveAngleSymbolic` và `calculateProjectile` trong `src/`. |
 
 ## Yêu cầu
 
@@ -89,5 +91,5 @@ Cần chạy lại `main` và `runTests` trên MATLAB trước khi nộp.
 
 ## Việc còn lại
 
-1. **`app/VL1.m` chưa chạy được.** Lớp `VL1` tham chiếu `./VL1.xml` (bố cục giao diện); file này chưa có trong repo. Cần bổ sung file gốc xuất từ App Designer vào thư mục `app/`.
-2. **`app/VL1.m` tính trực tiếp `alpha2 = 90 - alpha`**, chưa gọi `solveAngleSymbolic`.
+1. `app/VL1_1.m` luôn cần `app/VL1_1.xml` cùng thư mục; mở file `app/VL1_1.m` trong App Designer.
+2. `app/VL1_1.m` gọi `solveAngleSymbolic` (tìm `α2`) và `calculateProjectile` (tính `T`, `H`, `R`) trong `src/`; `startupFcn` tự thêm `src/` vào path. Phần tọa độ động vẫn tính trong app vì hai vật dùng chung một đồng hồ. Đã chạy thử không giao diện trên MATLAB R2026b ở 30°, 45° và 80°, không lỗi.
