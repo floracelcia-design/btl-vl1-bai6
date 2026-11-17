@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<MATLABApp schemaVersion='1.0.0' release='R2026b.0' minRelease='R2026b'>
+    <UIFigure name='UIFigure'>
+        <Name>'MATLAB App'</Name>
+        <Position>[100 100 637 479]</Position>
+        <Children>
+            <UIAxes name='UIAxes'>
+                <ButtonDownFcn>UIAxesButtonDown</ButtonDownFcn>
+                <FontName>'Times New Roman'</FontName>
+                <Position>[1 9 636 335]</Position>
+                <Title>
+                    <String>'Đồ thị quỹ đạo của vật ứng với 2 góc ném'</String>
+                </Title>
+                <XGrid>'on'</XGrid>
+                <XLabel>
+                    <String>'Tầm xa x (m)'</String>
+                </XLabel>
+                <XLim>[0 50]</XLim>
+                <YGrid>'on'</YGrid>
+                <YLabel>
+                    <String>'Độ cao y (m)'</String>
+                </YLabel>
+                <YLim>[0 12]</YLim>
+                <ZLabel>
+                    <String>'Z'</String>
+                </ZLabel>
+            </UIAxes>
+            <Label name='gcnm1SliderLabel'>
+                <FontName>'Times New Roman'</FontName>
+                <FontWeight>'bold'</FontWeight>
+                <HorizontalAlignment>'center'</HorizontalAlignment>
+                <Position>[7 456 213 22]</Position>
+                <Text>'góc ném α1'</Text>
+            </Label>
+            <Slider name='gcnm1Slider' label='gcnm1SliderLabel'>
+                <FontWeight>'bold'</FontWeight>
+                <Limits>[0 90]</Limits>
+                <MajorTickLabels>{'0', '15', '30', '45', '60', '75', '90'}</MajorTickLabels>
+                <MajorTicks>[0 15 30 45 60 75 90]</MajorTicks>
+                <MinorTicks>[0 2.5 5 7.5 10 12.5 15 17.5 20 22.5 25 27.5 30 32.5 35 37.5 40 42.5 45 47.5 50 52.5 55 57.5 60 62.5 65 67.5 70 72.5 75 77.5 80 82.5 85 87.5 90]</MinorTicks>
+                <Position>[19 440 190 3]</Position>
+                <Step>0.1</Step>
+                <Value>45</Value>
+                <ValueChangedFcn>gcnm1SliderValueChanged</ValueChangedFcn>
+                <ValueChangingFcn>gcnm1SliderValueChanging</ValueChangingFcn>
+            </Slider>
+            <Button name='vquoButton'>
+                <ButtonPushedFcn>vquoButtonPushed</ButtonPushedFcn>
+                <FontName>'Times New Roman'</FontName>
+                <FontWeight>'bold'</FontWeight>
+                <Position>[64 350 100 23]</Position>
+                <Text>'vẽ quỹ đạo'</Text>
+            </Button>
+            <Label name='EditFieldLabel'>
+                <FontName>'Times New Roman'</FontName>
+                <FontWeight>'bold'</FontWeight>
+                <HorizontalAlignment>'right'</HorizontalAlignment>
+                <Position>[7 381 102 22]</Position>
+                <Text>'vận tốc ban đầu v0'</Text>
+            </Label>
+            <NumericEditField name='EditField' label='EditFieldLabel'>
+                <FontName>'Times New Roman'</FontName>
+                <FontWeight>'bold'</FontWeight>
+                <HorizontalAlignment>'center'</HorizontalAlignment>
+                <Limits>[0 Inf]</Limits>
+                <LowerLimitInclusive>'off'</LowerLimitInclusive>
+                <Position>[125 381 100 22]</Position>
+                <UpperLimitInclusive>'off'</UpperLimitInclusive>
+                <Value>30</Value>
+                <ValueDisplayFormat>'%.1f m/s'</ValueDisplayFormat>
+            </NumericEditField>
+        </Children>
+    </UIFigure>
+    <RunConfiguration>
+        <StartupFcn>startupFcn</StartupFcn>
+    </RunConfiguration>
+    <AppDetails>
+        <Name>VL1_1</Name>
+        <Version>1.0</Version>
+    </AppDetails>
+    <InternalData>
+        <AppId>6c806360-987b-485f-9df5-1ec251880fb6</AppId>
+    </InternalData>
+    <!-- Thumbnail is used by file previewers. To change how the thumbnail is captured or stored, use the App Details dialog box in App Designer. -->
+    <Thumbnail autoCapture='true'>data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCACmANwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDyCipbdIpJ1WaQxxn7zBckfhV/7HpX/QRl/wC/JoAy6u6ba2t1LKLu8FrGibwxXJY5HAGeuCT+FT/Y9K/6CMv/AH5NH2PSv+gjL/35NADkstHM0wfV3EahTGRbtl85yPbHH1zStY6Mt0FGru8OwMWFuyknPK98cc5qrdQWkUObOY3UpYfI6lOPY+vSqzL0+VegzhzjPftQA2QKJHCHKBjtPqO1Np+3/ZH/AH3/APY0bf8AZH/ff/2NADKKkCAsARgZ5O/OP/HajoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAu6YLUzTG6uHgAgfy2UZ3PjAHQ+p/xFQwTsZ4xNNKsRYbyrcgZ5xU2naXc6pKY7by8ggHc4HUE9PwNXI/DGoySTRFYlkixlfNXkkAjHOO9AEOqtaxvF9gvZZldD5u7jByRjoP4cVP/AMS86EZW1Kb+0MbvJ5Izu9dvoc4z7+1Nt/DOpXcUUlukUiyDP+tVcHcVwc+4p9v4W1G6s47iLymMn3U8wA9SOc8dqAINIa1lum/tHUJbeNF3IVBbc2Rx0OOPbsKrzPGNQeKO6la0Eu1ZMnJTPXH0Jp0ulTw6aL53h8tmUBRICxyM5wPpVKWVYIoj5SuXySWJ9fY0AbGt/wBnwPF/ZepT3IywYvkYAI29hzx+lNtGsH0uY3F5PHd7HKKDlSRjaOnGct37VQ0yGTVbo28MVujBS26R2C/nnirw0O/eWOKK3s5JH8zCicjARgCeSODkY9aAGaQ9tLfn+0r6e3hCFhIg3HeORx371V1BLaO/mSzlaW3DfI7dTx9B3z2FR3qy2Dos9rCC65G2QnocEdeoIIqOKVZ45f3KoUAIKk+oHc0AJRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACglTkEg+opKKKAHIm9jyAAMkntTvLj/57D/vk0kbKpYNnDKRkdqntrg2c3mwTsr7SufLB4IwepoAiMKh9hkw+cbShzmntGoiXzAhVWKhnibg9xmtWHxLewiTbOpaSRpGYwDJ3dR14/mKbb+I762haJLlSpZn+a3U4JYMTz7igDKCW5IAW35/6ZtUZ2KxBt4cg4Py/wD16kJjaUyNIxJbccRgc5z61EzbnZvUk0ALmP8A594f++f/AK9G8BWVY403dSq802igAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigCSCMTTpGXCBjjcegp1zAtsQTKpBAxnrnAJHGemahpl1/x6w/77/yWgA82P8A56L+tL5sf/PRf1qlQOo+tAF0yRg43r+tJ5sf/PRf1qo332+ppKALvmR4J3rx9aTzY/8Anov61VH3G+optAFzzY/+ei/rW1p2raPaWaR3ViZblXZvOVsHBHA569/z9q5mnP8Ae/AfyoA6MahoDaWITZut2sePNDHDNhc/qCR6ZqS6vPDf2edbK2l80x/K8rkgE7eg9R81ctTl/i/3aAOmudQ8Ny2pMNlPHPsKLiXABCjDHjnnrUbX/h42bxrZ3CzYbY/m8AleCfXBrm6KAOle/wBC/swxrZuLhmyDvJ2/dzz15w/HbNSz33heeG48q0uLebY3lEuWBbAxkD8a5dvur9P602gDozqGiNZvFHYuk7AbZDJuCn5c/wAm/OpVv/DhE80ttKzvM2yKM7AsZAx6gHOa5lPvj602gDpIL/w8iP51lO7mRipEuAEPQY9RzzVPUbjTZbkPp0ckEG3GyV9x3d+fyrHp3/LMfWgC15sf/PRf1pfNj/56L+tUqKALpkjBILrx9aTzY/8Anov61Uf77fU0lAF3zI8E714+tJ5sf/PRf1qqPuN+FNoA04b1IY2Tbbvu7yR7iOCOD+OfqBTZJPNlaTai7yWwgwoz2A7Cs6rqf6tP90UATQRedOkW4LvOMnoKdqlp9nijQTwyYYnKt1yFqGmXX/HrD/vv/JaAKu33X86AvI5Xr602gdR9aAHsvztyvX1pNvuv50jffb6mkoAeF+RuV6jvSbfdfzoH3G+optADtvuv50rr83Veg7+1Mpz/AHvwH8qADb7r+dKq/e5Xp60ynL/F/u0AG33X86Nvuv502igB7L8q8r09fek2+6/nQ33V+n9abQA9F+ccr19abt91/OlT74+tNoAdt91/Ol2/uxyvX1plO/5Zj60AG33X86Nvuv502igB7r87cr1Pek2+6/nSP99vqaSgB4X5G5Xt3pNvuv50D7jfhTaAHbfdfzq4vCL/ALoqjV1P9Wn+6KAHVNqlm1tHHGZInwxOVcd1U1YubaGPS7WdP9bISGG7OPrWddf8esP++/8AJaAKu0+q/wDfQoCnI5Xr/eFNoHUfWgB7Kd7cr1/vCk2n1X/voUjffb6mkoAeFOxuV6j+IUm0+q/99Cgfcb6im0AO2n1X/voUrqd3Veg/iHpTKc/3vwH8qADafVf++hSqp+blen94UynL/F/u0AG0+q/99CjafVf++hTaKAHsp2ryvT+8PWk2n1X/AL6FDfdX6f1ptAD0U7xyvX+8KbtPqv8A30KVPvj602gB20+q/wDfQpdp8scr1/vCmU7/AJZj60AG0+q/99CjafVf++hTaKAHup3tyvU/xCk2n1X/AL6FI/32+ppKAHhTsble38QpNp9V/wC+hQPuN+FNoAdtPqv/AH0KuKMIv+6Ko1dT/Vp/uigDRud39k2jMJsHdtJlypwecL2qrqdlLaxxxuUJViTtcdwpq9eiZdFsEkC+Xl2Qh85z7Y/qfwrJu/8Aj2h/33/ktAFXYfb8xQEOR06+optA6j60APZDvbp19RSbD7fmKRvvt9TSUAPCHY3TqO4pNh9vzFA+431FNoAdsPt+YpXQ7u3Qdx6UynP978B/KgA2H2/MUqofm6dPUUynL/F/u0AGw+35ijYfb8xTaKAHsh2r06eo9aTYfb8xQ33V+n9abQA9EO8dOvqKbsPt+YpU++PrTaAHbD7fmKXYfLHTr6imU7/lmPrQAbD7fmKNh9vzFNooAe6He3Tqe4pNh9vzFI/32+ppKAHhDsbp27ik2H2/MUD7jfhTaAHbD7fmKuKMIv8AuiqNXU/1af7ooAuXN/NdW8MMgjCRDClVwemOfyqLUbKe3hiSRACCWPI6MqkfzqKmXf8Ax7Q/77fyWgCrsb0/WgI2Rx39abQOo+tAD2Rt7cd/Wk2N6frSN99vqaSgCQI2xuO4703Y3p+tA+431FNoAdsb0/WldG3dOw7+1MpX+9+A/lQAuxvT9acqN83Hb1qOnL/F/u0AGxvT9aNjen602igB7I21eO3r70mxvT9aRvur9P60lAEiI28cd/Wm7G9P1oT74+tNoAdsb0/WnbG8scd/Wo6d/wAsx9aADY3p+tGxvT9abRQA90be3Hc96TY3p+tI/wB9vqaSgCQI2xuPTvTdjen60D7jfhTaAHbG9P1q4owig/3RVGrqf6tP90UAOp9/bSx28QIBwxJKnI5VSKZTb1me3iZ2LNvbljk9FoAqbG/umgI2R8p602gdR9aAHsjb2+U9aTY3900jffb6mkoAkCNsb5T1FN2N/dNA+431FNoAdsb+6aV0bd909B/KmUr/AHvwH8qAF2N/dNOVG+b5T0qOnL/F/u0AGxv7po2N/dNNooAeyNtX5T0/rSbG/umkb7q/T+tJQBIiNvHynrTdjf3TQn3x9abQA7Y39007Y3lj5T1qOnf8sx9aADY3900bG/umm0UAPdG3t8p6mk2N/dNI/wB9vqaSgCQI2xvlPam7G/umgfcb8KbQA7Y3901cUYRQf7oqjV1P9Wn+6KAHVNf2F1DHHE0DlwzEhRuxkL6VDViS4SW0SNoszK2TMWyWHYf59KAM77Hc/wDPvL/3waVbO5LD/R5ev9w1YpyELIrMMgEEj1oArSWdyJHH2eU4YjhDTfsdz/z7y/8AfBq5M6yTSOqBFZiQo6KPSmUAQrZXJic/Z5eCONh96Z9juf8An3l/74Nadvc28VtLHJarLIwYK5P3cgY/LFVaAK32O5/595f++DT5LK5V8eRKeAeEPoKmHBBqxdzxTuphgWFRngd8kkflnH4UAZ32O5/595f++DT47K5O/wDcSjCk8oamq3Y3VvbFzParcBsYVscUAZf2O5/595f++DR9juf+feX/AL4NXIonnlWOJSzucKo7n0p8lpcRDLRPjAOQMgZ96AKb2VyFQ/Z5eRn7h9TTPsdz/wA+8v8A3wa17lt8CRJZNG6cs+zBOAAc4HTNVja3AGTBJjGc7TjGM/yoAqRWVy0qjyJBk9Shpn2S5/595f8Avg1oWc0VvcCSaBZ0wQUboaZPIktxJJHGI0ZshB2FAFL7Hc/8+8v/AHwaf9iufJDfZ5fvEY2HPQVNVo3MJsRALdfN/wCevfrn/wCtQBmfY7n/AJ95f++DR9juf+feX/vg1ZqW2kjiuY5JYhNGrAtGTjcPSgCpJZXKyuPs8pwxGQhpn2O5/wCfeX/vg1oXk0U9wZIIBAmANgOagoAhWyuTG58iXjH8Bpn2O5/595f++DWnBcwRWkkT2qyStnbIT90YI6fXmqtAFb7Hc/8APvL/AN8GrRjaIKjjDBRkHtxQOoz0rSk1GxdsjSoh9GI/lQBmUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA6KR4ZUljba6MGU+hHSrbavfvbfZmuCYduzZtGMenSiigAk1a/mOZLgsdrLyo6N97t3xSnV75ojEZzsII24HcYP8AM0UUAUaKKKACiiigAooooAKKKKACiiigAooooA//2Q==</Thumbnail>
+</MATLABApp>
