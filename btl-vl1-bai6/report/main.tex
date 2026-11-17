@@ -1,0 +1,85 @@
+% !TEX program = xelatex
+% !TEX recipe = latexmk (xelatex)
+% Báo cáo BTL Vật lý 1 - Bài 6. Biên dịch bằng XeLaTeX:
+%   latexmk -xelatex main.tex
+\documentclass[13pt,a4paper,oneside]{extreport}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}          % Times; đổi thành Times New Roman nếu máy có
+\usepackage[left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,siunitx}
+\usepackage{graphicx,float,caption,booktabs,array,longtable}
+\usepackage{setspace}\onehalfspacing
+\usepackage{titlesec,tocloft}
+\usepackage{listings,xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+
+\graphicspath{{../figures/}}
+\sisetup{output-decimal-marker={,}}
+
+% Tiêu đề chương: "CHƯƠNG 1. TÊN CHƯƠNG" theo mẫu
+\titleformat{\chapter}[hang]{\normalfont\large\bfseries\centering}{CHƯƠNG \thechapter.}{0.5em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+\titleformat{\section}{\normalfont\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries\itshape}{\thesubsection.}{0.5em}{}
+% Tiêu đề Mục lục / Danh sách hình / bảng: căn giữa, cỡ như tiêu đề chương
+\renewcommand{\cfttoctitlefont}{\hfill\large\bfseries}\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\large\bfseries}\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\large\bfseries}\renewcommand{\cftafterlottitle}{\hfill}
+\setlength{\cftbeforetoctitleskip}{0pt}\setlength{\cftbeforeloftitleskip}{0pt}\setlength{\cftbeforelottitleskip}{0pt}
+\titleformat{name=\chapter,numberless}[hang]{\normalfont\large\bfseries\centering}{}{0pt}{}
+\titlespacing*{name=\chapter,numberless}{0pt}{0pt}{18pt}
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftchappresnum}{CHƯƠNG }
+\renewcommand{\cftchapaftersnum}{.}
+\setlength{\cftchapnumwidth}{6em}
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftdotsep}{2}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% Tên mục bằng tiếng Việt
+  \renewcommand{\contentsname}{MỤC LỤC}%
+  \renewcommand{\listfigurename}{DANH SÁCH HÌNH VẼ}%
+  \renewcommand{\listtablename}{DANH SÁCH BẢNG}%
+  \renewcommand{\bibname}{TÀI LIỆU THAM KHẢO}%
+  \renewcommand{\figurename}{Hình}%
+  \renewcommand{\tablename}{Bảng}%
+  \renewcommand{\appendixname}{Phụ lục}
+
+% Mã nguồn MATLAB trong phụ lục
+\lstset{language=Matlab, basicstyle=\ttfamily\small, breaklines=true,
+  numbers=left, numberstyle=\tiny, frame=single, extendedchars=true,
+  inputencoding=utf8, keywordstyle=\color{blue}, commentstyle=\color{green!50!black},
+  stringstyle=\color{purple}, showstringspaces=false}
+
+% Chương không đánh số nhưng có trong mục lục
+\newcommand{\unnumberedchapter}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+
+\begin{document}
+\input{frontmatter/cover}
+\input{frontmatter/members}
+
+\pagenumbering{roman}
+\unnumberedchapter{TÓM TẮT BÀI BÁO CÁO}  \input{frontmatter/abstract}
+\unnumberedchapter{LỜI CẢM ƠN}           \input{frontmatter/acknowledgement}
+\clearpage\tableofcontents
+\clearpage\addcontentsline{toc}{chapter}{DANH SÁCH HÌNH VẼ}\listoffigures
+\clearpage\addcontentsline{toc}{chapter}{DANH SÁCH BẢNG}\listoftables
+\unnumberedchapter{DANH MỤC CÁC TỪ VIẾT TẮT} \input{frontmatter/abbreviations}
+\unnumberedchapter{YÊU CẦU ĐỀ TÀI ĐƯỢC GIAO} \input{frontmatter/assignment}
+
+\clearpage\pagenumbering{arabic}
+\input{chapters/ch1_lythuyet}
+\input{chapters/ch2_toanhoc}
+\input{chapters/ch3_chuongtrinh}
+\input{chapters/ch4_kiemthu}
+\input{chapters/ch5_thaoluan}
+\input{chapters/ch6_ketluan}
+
+\unnumberedchapter{TÀI LIỆU THAM KHẢO}
+\input{chapters/references}
+
+\unnumberedchapter{PHỤ LỤC}
+\input{chapters/appendix}
+\end{document}

@@ -1,72 +1,145 @@
-% Báo cáo BTL Vật lý 1 - Bài 6. Biên dịch bằng XeLaTeX:
-%   latexmk -xelatex main.tex
-\documentclass[13pt,a4paper,oneside]{extreport}
+% !TEX program = xelatex
+% !TEX recipe = latexmk (xelatex)
+% Báo cáo BTL Vật lý 1 - Bài 6. Biên dịch bằng XeLaTeX:  latexmk -xelatex main.tex
+% Định dạng theo "Phụ lục mẫu trình bày file Word chung BTL" của Khoa Khoa học Ứng dụng:
+%   lề trái 3 cm, phải 2 cm, trên 2 cm, dưới 2 cm (đo trên file mẫu);
+%   Times New Roman 13, giãn dòng 1,5 lines của Word (22,4 pt), cách đoạn trước 10 pt.
+\RequirePackage{fix-cm}                % font toán co giãn mọi cỡ (bìa dùng cỡ 16-20)
+\documentclass[a4paper,oneside,12pt]{report}
+
+% ---------- Font ----------
 \usepackage{fontspec}
-\setmainfont{TeX Gyre Termes}          % Times; đổi thành Times New Roman nếu máy có
-\usepackage[left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\IfFontExistsTF{Times New Roman}
+  {\setmainfont{Times New Roman}}
+  {\setmainfont{TeX Gyre Termes}}      % thay thế khi máy không có Times New Roman
+\IfFontExistsTF{Courier New}           % font cho mã nguồn trong phụ lục
+  {\setmonofont{Courier New}}
+  {\setmonofont{TeX Gyre Cursor}}
+
+% Cỡ chữ nội dung 13 pt. "Single" của Word với Times New Roman = 1,149 x cỡ chữ.
+\makeatletter
+\renewcommand\normalsize{\@setfontsize\normalsize{13pt}{14.94pt}%
+  \abovedisplayskip 10pt plus2pt minus5pt\belowdisplayskip\abovedisplayskip
+  \abovedisplayshortskip\z@ plus3pt\belowdisplayshortskip 6pt plus3pt minus3pt}
+\normalsize
+\makeatother
+% \fs{cỡ}: đổi cỡ chữ, khoảng cách dòng theo kiểu "single" của Word
+\newcommand{\fs}[1]{\fontsize{#1}{1.149\dimexpr #1pt\relax}\selectfont}
+
+% ---------- Lề giấy ----------
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm,footskip=0.9cm]{geometry}
+
+% ---------- Đoạn văn ----------
+\usepackage{setspace}
+\setstretch{1.5}                       % 1,5 lines của Word: 1,5 x 14,94 = 22,4 pt
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt plus 2pt minus 1pt}
+\setlength{\topskip}{20pt}
+
+% ---------- Gói khác ----------
 \usepackage{amsmath,amssymb,siunitx}
-\usepackage{graphicx,float,caption,booktabs,array,longtable}
-\usepackage{setspace}\onehalfspacing
-\usepackage{titlesec,tocloft}
-\usepackage{listings,xcolor}
+\usepackage{graphicx,float,booktabs,array,longtable}
+\usepackage[font={normalsize,stretch=1},labelsep=space,justification=centering,
+            skip=6pt]{caption}
+\usepackage{titlesec,tocloft,enumitem}
+\usepackage{xcolor}
+\usepackage{fvextra}
+\usepackage{fancyhdr}
 \usepackage[hidelinks]{hyperref}
-\usepackage{indentfirst}
-\usepackage{enumitem}
 
 \graphicspath{{../figures/}}
 \sisetup{output-decimal-marker={,}}
+\setlist{itemsep=0pt,topsep=0pt,parsep=0pt}
 
-% Tiêu đề chương: "CHƯƠNG 1. TÊN CHƯƠNG" theo mẫu
-\titleformat{\chapter}[hang]{\normalfont\large\bfseries\centering}{CHƯƠNG \thechapter.}{0.5em}{}
-\titlespacing*{\chapter}{0pt}{0pt}{18pt}
-\titleformat{\section}{\normalfont\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\normalfont\bfseries\itshape}{\thesubsection.}{0.5em}{}
-% Tiêu đề Mục lục / Danh sách hình / bảng: căn giữa, cỡ như tiêu đề chương
-\renewcommand{\cfttoctitlefont}{\hfill\large\bfseries}\renewcommand{\cftaftertoctitle}{\hfill}
-\renewcommand{\cftloftitlefont}{\hfill\large\bfseries}\renewcommand{\cftafterloftitle}{\hfill}
-\renewcommand{\cftlottitlefont}{\hfill\large\bfseries}\renewcommand{\cftafterlottitle}{\hfill}
-\setlength{\cftbeforetoctitleskip}{0pt}\setlength{\cftbeforeloftitleskip}{0pt}\setlength{\cftbeforelottitleskip}{0pt}
-\titleformat{name=\chapter,numberless}[hang]{\normalfont\large\bfseries\centering}{}{0pt}{}
-\titlespacing*{name=\chapter,numberless}{0pt}{0pt}{18pt}
-\renewcommand{\cftchapfont}{\bfseries}
-\renewcommand{\cftchappresnum}{CHƯƠNG }
-\renewcommand{\cftchapaftersnum}{.}
-\setlength{\cftchapnumwidth}{6em}
-\renewcommand{\cftsecaftersnum}{.}
-\renewcommand{\cftdotsep}{2}
+% ---------- Số trang: chân trang, canh giữa; không dùng header ----------
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\normalsize\thepage}%
+  \renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+% ---------- Đề mục ----------
+% Khoảng cách tiêu đề đã hiệu chỉnh để khớp vị trí đo trên file mẫu Word (tên chương cách mép
+% trên ~3 cm; đoạn văn -> tiêu đề 28-31 pt; tiêu đề -> đoạn văn 34,5 pt, tính theo đường chân chữ).
+% Heading 1: "CHƯƠNG 1.   TÊN CHƯƠNG" - cỡ 14, đậm, in hoa, canh trái
+\titleformat{\chapter}[hang]{\setstretch{1}\fs{14}\bfseries\raggedright}
+  {\makebox[3.9cm][l]{CHƯƠNG \thechapter.}}{0pt}{}
+\titlespacing*{\chapter}{0pt}{-18.5pt}{20pt}
+% Tiêu đề không đánh số (Tóm tắt, Lời cảm ơn, Tài liệu tham khảo...): cỡ 14, đậm, canh giữa
+\titleformat{name=\chapter,numberless}[block]{\setstretch{1}\fs{14}\bfseries\filcenter}{}{0pt}{}
+\titlespacing*{name=\chapter,numberless}{0pt}{-18.5pt}{0pt}
+% Heading 2: "1.1." - cỡ 13, đậm
+\titleformat{\section}{\setstretch{1}\normalsize\bfseries\raggedright}{\thesection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{6pt}{2.1pt}
+% Heading 3: "1.1.1." - cỡ 13, đậm nghiêng
+\titleformat{\subsection}{\setstretch{1}\normalsize\bfseries\itshape\raggedright}{\thesubsection.}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{6pt}{2.1pt}
+% Heading 4: "1.1.1.1." - cỡ 13, nghiêng
+\setcounter{secnumdepth}{3}
+\titleformat{\subsubsection}{\setstretch{1}\normalsize\itshape\raggedright}{\thesubsubsection.}{0.5em}{}
+\titlespacing*{\subsubsection}{0pt}{6pt}{2.1pt}
+
+% Đánh số hình, bảng, phương trình theo chương: Hình 1.1, Bảng 2.1, (1.1)
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+% ---------- Mục lục và danh mục: cỡ 13, giãn dòng 1,15 ----------
+\renewcommand{\contentsname}{MỤC LỤC}
+\renewcommand{\listfigurename}{DANH MỤC CÁC HÌNH ẢNH}
+\renewcommand{\listtablename}{DANH MỤC BẢNG BIỂU}
+\renewcommand{\figurename}{Hình}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\cfttoctitlefont}{\hfill\fs{14}\bfseries}\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\fs{14}\bfseries}\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\fs{14}\bfseries}\renewcommand{\cftafterlottitle}{\hfill}
+\setlength{\cftbeforetoctitleskip}{0pt}\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftbeforelottitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{24pt}\setlength{\cftafterloftitleskip}{24pt}
+\setlength{\cftafterlottitleskip}{24pt}
+% Như mẫu: các dòng không in đậm; mục 1.1 thụt 0,46 cm; mục 1.1.1 thụt 0,92 cm; dấu chấm dẫn liền
+\renewcommand{\cftchapfont}{\normalfont}\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftdotsep}{0.6}
+\renewcommand{\cftchappresnum}{CHƯƠNG }\renewcommand{\cftchapaftersnum}{.}
+\setlength{\cftchapnumwidth}{6.5em}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecaftersnum}{.}\renewcommand{\cftsubsecaftersnum}{.}
+\setlength{\cftsecindent}{0.46cm}\setlength{\cftsubsecindent}{0.92cm}
+\setlength{\cftsecnumwidth}{2.6em}\setlength{\cftsubsecnumwidth}{3.4em}
+\setlength{\cftbeforechapskip}{10pt}\setlength{\cftbeforesecskip}{10pt}
+\setlength{\cftbeforesubsecskip}{10pt}
+\renewcommand{\cftfigpresnum}{Hình }\renewcommand{\cfttabpresnum}{Bảng }
+\setlength{\cftfignumwidth}{4.5em}\setlength{\cfttabnumwidth}{4.5em}
+\setlength{\cfttabindent}{0pt}\setlength{\cftfigindent}{0pt}
+\setlength{\cftbeforefigskip}{10pt}\setlength{\cftbeforetabskip}{10pt}
 
-% Tên mục bằng tiếng Việt
-  \renewcommand{\contentsname}{MỤC LỤC}%
-  \renewcommand{\listfigurename}{DANH SÁCH HÌNH VẼ}%
-  \renewcommand{\listtablename}{DANH SÁCH BẢNG}%
-  \renewcommand{\bibname}{TÀI LIỆU THAM KHẢO}%
-  \renewcommand{\figurename}{Hình}%
-  \renewcommand{\tablename}{Bảng}%
-  \renewcommand{\appendixname}{Phụ lục}
+% ---------- Mã nguồn MATLAB trong phụ lục ----------
+% Dùng fvextra (không dùng listings vì listings đảo thứ tự chữ tiếng Việt có dấu khi chạy XeLaTeX).
+% In đúng nguyên văn file .m, đánh số dòng, có khung, tự xuống dòng khi dòng quá dài.
+\fvset{numbers=left, numbersep=6pt, frame=single, framesep=4pt, rulecolor=\color{gray},
+  fontsize=\fs{10}, baselinestretch=1, breaklines=true, breakafter={=-}, breakafterinrun=true,
+  breakaftersymbolpre={}, tabsize=4}
 
-% Mã nguồn MATLAB trong phụ lục
-\lstset{language=Matlab, basicstyle=\ttfamily\small, breaklines=true,
-  numbers=left, numberstyle=\tiny, frame=single, extendedchars=true,
-  inputencoding=utf8, keywordstyle=\color{blue}, commentstyle=\color{green!50!black},
-  stringstyle=\color{purple}, showstringspaces=false}
-
-% Chương không đánh số nhưng có trong mục lục
-\newcommand{\unnumberedchapter}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+% Tiêu đề không đánh số nhưng có trong mục lục
+\newcommand{\unnumberedchapter}[1]{\chapter*{#1}\phantomsection\addcontentsline{toc}{chapter}{#1}}
 
 \begin{document}
+% Bìa chính và bìa phụ: không đánh số trang
 \input{frontmatter/cover}
 \input{frontmatter/members}
 
-\pagenumbering{roman}
-\unnumberedchapter{TÓM TẮT BÀI BÁO CÁO}  \input{frontmatter/abstract}
-\unnumberedchapter{LỜI CẢM ƠN}           \input{frontmatter/acknowledgement}
+% Phần mở đầu: i, ii, iii, ... bắt đầu từ Tóm tắt (Tóm tắt, Lời cảm ơn không có trong mục lục)
+\pagenumbering{roman}\setcounter{page}{1}
+\chapter*{TÓM TẮT BÀI BÁO CÁO}   \input{frontmatter/abstract}
+\chapter*{LỜI CẢM ƠN}            \input{frontmatter/acknowledgement}
+\begingroup
+\setstretch{1.15}\setlength{\parskip}{0pt}
 \clearpage\tableofcontents
-\clearpage\addcontentsline{toc}{chapter}{DANH SÁCH HÌNH VẼ}\listoffigures
-\clearpage\addcontentsline{toc}{chapter}{DANH SÁCH BẢNG}\listoftables
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{DANH MỤC CÁC HÌNH ẢNH}\listoffigures
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{DANH MỤC BẢNG BIỂU}\listoftables
+\endgroup
 \unnumberedchapter{DANH MỤC CÁC TỪ VIẾT TẮT} \input{frontmatter/abbreviations}
-\unnumberedchapter{YÊU CẦU ĐỀ TÀI ĐƯỢC GIAO} \input{frontmatter/assignment}
+\chapter*{YÊU CẦU ĐỀ TÀI ĐƯỢC GIAO}          \input{frontmatter/assignment}
 
+% Phần nội dung: 1, 2, 3, ... liên tục đến hết phụ lục
 \clearpage\pagenumbering{arabic}
 \input{chapters/ch1_lythuyet}
 \input{chapters/ch2_toanhoc}

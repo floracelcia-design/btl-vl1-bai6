@@ -1,17 +1,26 @@
+% Bìa chính (theo mẫu): khung viền cách mép giấy trái 2,5 cm, phải/trên/dưới 1,5 cm;
+% chữ cách khung 0,6 cm.
 \begin{titlepage}
-\begin{center}
-{\large ĐẠI HỌC QUỐC GIA TP. HỒ CHÍ MINH}\\
-{\large\bfseries TRƯỜNG ĐẠI HỌC BÁCH KHOA}\\
-{\large\bfseries KHOA KHOA HỌC ỨNG DỤNG}\\[1.5cm]
-% \includegraphics[width=4cm]{logo_hcmut}\\[1.5cm]  % thêm logo nếu có
+\newgeometry{left=2.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
+\setlength{\fboxsep}{0.6cm}\setlength{\fboxrule}{1pt}
+\noindent\fbox{\begin{minipage}[t][\dimexpr\textheight-1.2cm-2pt][t]{\dimexpr\textwidth-1.2cm-2pt}
+\centering\setstretch{1}
+{\fs{16}\bfseries ĐẠI HỌC QUỐC GIA TP. HỒ CHÍ MINH\\
+TRƯỜNG ĐẠI HỌC BÁCH KHOA\\
+KHOA KHOA HỌC ỨNG DỤNG\par}
+\vspace{0.6cm}
+\includegraphics[width=2cm]{logo_hcmut}\par
+\vspace{0.9cm}
+{\fs{18}\bfseries BÁO CÁO BÀI TẬP LỚN\par
+\vspace{4pt} MÔN HỌC: VẬT LÝ 1\par}
 \vspace{2cm}
-{\LARGE\bfseries BÁO CÁO BÀI TẬP LỚN}\\[0.4cm]
-{\Large\bfseries MÔN HỌC: VẬT LÝ 1}\\[1.5cm]
-{\large\bfseries ĐỀ TÀI (BÀI 6):}\\[0.3cm]
-{\large\bfseries VẼ QUỸ ĐẠO CHUYỂN ĐỘNG NÉM XIÊN TRONG TRỌNG TRƯỜNG BỎ QUA LỰC CẢN VÀ XÁC ĐỊNH MỘT SỐ THÔNG SỐ LIÊN QUAN}\\[2cm]
-{\bfseries LỚP: L06 --- NHÓM: 5}\\[0.3cm]
-{\bfseries GIẢNG VIÊN HƯỚNG DẪN: CÔ NGUYỄN LÊ BẢO THƯ}
+{\fs{20}\bfseries VẼ QUỸ ĐẠO CHUYỂN ĐỘNG NÉM XIÊN TRONG TRỌNG TRƯỜNG BỎ QUA LỰC CẢN VÀ XÁC ĐỊNH MỘT SỐ THÔNG SỐ LIÊN QUAN\par}
+\vspace{3cm}
+{\fs{18}\bfseries LỚP L06, NHÓM 5\par}
+\vspace{0.9cm}
+{\fs{16}\bfseries\hfill GVHD: Cô Nguyễn Lê Bảo Thư\hspace*{0.8cm}\par}
 \vfill
-{\bfseries TP. HỒ CHÍ MINH, THÁNG 11/2026}
-\end{center}
+{\fs{14}\bfseries Tp. HCM, 11/2026\par}
+\end{minipage}}
+\restoregeometry
 \end{titlepage}
