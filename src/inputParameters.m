@@ -41,7 +41,7 @@ function [v0, alpha1_deg, alpha1_rad, g] = inputParameters()
            fprintf('   [LỖI] Dữ liệu không hợp lệ! Gia tốc g phải là một số thực dương.\n\n');
        end
    end
-   % Quy đổi góc sang radian để thống nhất với các module khác (TV1, TV4, TV6)
+   % Quy đổi góc sang radian (đầu ra phụ; các hàm khác nhận góc theo độ và tự đổi)
    alpha1_rad = deg2rad(alpha1_deg);
    fprintf('----------------------------------------------------------\n');
    fprintf('   [THÀNH CÔNG] Đã ghi nhận: v0 = %.2f m/s | alpha1 = %.2f độ (%.4f rad) | g = %.2f m/s^2\n', ...

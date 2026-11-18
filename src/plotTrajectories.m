@@ -48,7 +48,7 @@ function fig = plotTrajectories(v0, alpha1_deg, alpha2_deg, g, outFile)
     axis(ax, 'equal');
     xlim(ax, [0, 1.05 * max(R1, R2)]);
     ylim(ax, [0, 1.20 * Hmax]);
-    xlabel(ax, 'Tầm xa x (m)');
+    xlabel(ax, 'Tọa độ ngang x (m)');
     ylabel(ax, 'Độ cao y (m)');
     title(ax, {'Quỹ đạo ném xiên', ...
         sprintf('v_0 = %.2f m/s, g = %.2f m/s^2, R = %.2f m', v0, g, R1)});

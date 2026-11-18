@@ -1,4 +1,4 @@
-   function [T, H, R, x, y, t] = calculateProjectile(v0, alpha_deg, g)
+function [T, H, R, x, y, t] = calculateProjectile(v0, alpha_deg, g)
 % CALCULATEPROJECTILE Tính thông số đặc trưng (T, H, R) và tạo 500 điểm tọa độ quỹ đạo
 %   Đầu vào:
 %       v0        : Vận tốc ban đầu (m/s)
@@ -10,8 +10,11 @@
 %       R         : Tầm bay xa trên mặt phẳng ngang (m)
 %       x, y      : Vector hàng (1x500) chứa tọa độ ngang và đứng của quỹ đạo (m)
 %       t         : Vector hàng (1x500) chứa các mốc thời gian tương ứng (s)
-   % Kiểm tra an toàn đầu vào (phòng trường hợp gọi hàm trực tiếp không qua inputParameters)
-   if v0 <= 0 || alpha_deg <= 0 || alpha_deg >= 90 || g <= 0
+   % Kiểm tra an toàn đầu vào (phòng trường hợp gọi hàm trực tiếp không qua inputParameters).
+   % Kiểm tra kiểu trước (số thực, một phần tử, hữu hạn) rồi mới so sánh, để NaN/Inf
+   % hoặc mảng không lọt qua và không gây lỗi hệ thống ở toán tử ||.
+   if ~isFiniteRealScalar(v0) || ~isFiniteRealScalar(alpha_deg) || ~isFiniteRealScalar(g) ...
+           || v0 <= 0 || alpha_deg <= 0 || alpha_deg >= 90 || g <= 0
        error('calculateProjectile:InvalidInput', ...
              'Thông số đầu vào không hợp lệ (Yêu cầu: v0 > 0, 0 < alpha < 90, g > 0).');
    end
@@ -29,4 +32,9 @@
    y = (v0 * sin(alpha_rad)) .* t - 0.5 * g .* (t.^2);
    % Khử sai số dấu phẩy động tại điểm chạm đất cuối cùng (đảm bảo y(end) = 0 tuyệt đối)
    y(end) = 0;
+end
+
+function tf = isFiniteRealScalar(value)
+% Số thực hữu hạn, một phần tử (loại chuỗi, số phức, mảng, NaN, Inf)
+   tf = isnumeric(value) && isscalar(value) && isreal(value) && isfinite(value);
 end
