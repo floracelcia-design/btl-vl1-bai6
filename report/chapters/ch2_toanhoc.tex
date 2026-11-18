@@ -1,10 +1,97 @@
-\chapter{PHÂN TÍCH TOÁN HỌC VÀ BIỆN LUẬN NGHIỆM GÓC NÉM}
+% Chương 2 - Nguồn: TV3 (Vy), Google Doc "Workspace Nhóm - BTL Vật Lý 1 2026"
+\chapter{PHÂN TÍCH TOÁN HỌC VÀ BIỆN LUẬN NGHIỆM GÓC NÉM}\label{chap:toanhoc}
+
 \section{Đặt bài toán tìm góc ném thứ hai}
-% TODO: dán nội dung từ Google Docs vào đây.
+Trong chương trước, các phương trình chuyển động của vật ném xiên trong trọng trường đều (bỏ qua lực cản không khí) đã được thiết lập. Tầm xa của vật 1 ném lên từ mặt đất với vận tốc ban đầu $v_0$ và góc ném $\alpha_1$ là:
+\[ R_1 = \frac{v_0^2\sin 2\alpha_1}{g} \]
+(công thức \eqref{eq:R}, Chương~\ref{chap:lythuyet}). Gọi $R_1$, $H_1$, $T_1$ và $R_2$, $H_2$, $T_2$ lần lượt là tầm xa, độ cao cực đại và thời gian bay của vật 1 (góc ném $\alpha_1$) và vật 2 (góc ném $\alpha_2$).
+
+Bài toán đặt ra là: hai vật được ném lên từ mặt đất với cùng vận tốc ban đầu $v_0$ trong cùng trọng trường đều $g$. Với góc ném $\alpha_1$ của vật 1 cho trước, cần tìm góc ném $\alpha_2$ của vật 2 sao cho hai vật có cùng tầm xa. Điều kiện cần thiết lập là:
+\[ R_1 = R_2 \]
 
 \section{Biến đổi lượng giác và nghiệm tổng quát}
-% TODO: dán nội dung từ Google Docs vào đây.
+Thay công thức tầm xa vào phương trình $R_1 = R_2$, ta được:
+\[ \frac{v_0^2\sin 2\alpha_1}{g} = \frac{v_0^2\sin 2\alpha_2}{g} \;\Rightarrow\; \sin 2\alpha_1 = \sin 2\alpha_2 \]
+(rút gọn được vì $v_0 > 0$ và $g > 0$).
+
+Áp dụng công thức nghiệm tổng quát $\sin X = \sin Y \Leftrightarrow X = Y + 2k\pi$ hoặc $X = \pi - Y + 2k\pi$ ($k \in \mathbb{Z}$), ta thu được hai họ nghiệm sau (các phép biến đổi dùng đơn vị rad, kết quả số ghi bằng độ):
+\begin{align*}
+  2\alpha_2 &= 2\alpha_1 + 2k\pi       &&\Rightarrow\quad \alpha_2 = \alpha_1 + k\pi \qquad (k \in \mathbb{Z}) \\
+  2\alpha_2 &= \pi - 2\alpha_1 + 2k\pi &&\Rightarrow\quad \alpha_2 = \frac{\pi}{2} - \alpha_1 + k\pi \qquad (k \in \mathbb{Z})
+\end{align*}
 
 \section{Điều kiện nghiệm vật lý trong góc phần tư thứ nhất}
-% TODO: dán nội dung từ Google Docs vào đây.
+Về mặt toán học, phương trình cho ra vô số nghiệm với các giá trị $k$ nguyên khác nhau. Tuy nhiên, xét theo mô hình vật lý thực tế của bài toán ném xiên trên mặt đất: vật được ném hướng lên phía trên mặt đất và hướng về phía trước theo chiều dương trục Ox. Vì vậy, góc ném hợp lệ phải nằm hoàn toàn trong góc phần tư thứ nhất: $0^\circ < \alpha < 90^\circ$ (hay $0 < \alpha < \pi/2$). Điều này phù hợp với cách chọn hệ trục ở Chương~\ref{chap:lythuyet}: trục Ox cùng chiều hình chiếu ngang của vận tốc ban đầu nên $\cos\alpha > 0$, vật được ném lên nên $\sin\alpha > 0$. Hai giá trị biên bị loại: với $\alpha = 0^\circ$ thì $T = 0$ và $R = 0$ (vật không rời mặt đất); với $\alpha = 90^\circ$ thì $R = 0$ (vật rơi lại đúng điểm ném). Cặp $0^\circ$ và $90^\circ$ vẫn thỏa mãn $\sin 2\alpha_1 = \sin 2\alpha_2$ nhưng là trường hợp suy biến. Khi $\alpha_1 \to 0^+$ thì $\alpha_2 \to (90^\circ)^-$ và $R \to 0$.
 
+Áp dụng điều kiện này vào hai họ nghiệm:
+
+\textbf{Họ nghiệm thứ nhất: $\boldsymbol{\alpha_2 = \alpha_1 + k\pi}$}
+
+Với $0 < \alpha_1 < \pi/2$, điều kiện $0 < \alpha_2 < \pi/2$ trở thành:
+\[ 0 < \alpha_1 + k\pi < \frac{\pi}{2} \]
+Bất phương trình trên tương đương $-\dfrac{\alpha_1}{\pi} < k < \dfrac{1}{2} - \dfrac{\alpha_1}{\pi}$. Vì $0 < \alpha_1 < \pi/2$ nên $-\dfrac{1}{2} < -\dfrac{\alpha_1}{\pi} < 0$ và $0 < \dfrac{1}{2} - \dfrac{\alpha_1}{\pi} < \dfrac{1}{2}$, do đó $k \in \left(-\dfrac{1}{2};\ \dfrac{1}{2}\right)$, tức $k = 0$ ($k = 0$ thỏa mãn vì $-\dfrac{\alpha_1}{\pi} < 0 < \dfrac{1}{2} - \dfrac{\alpha_1}{\pi}$). Khi đó: $\alpha_2 = \alpha_1$.
+
+Đây chính là góc ném ban đầu nên bị loại khỏi yêu cầu tìm góc ném thứ hai khác với góc đã cho.
+
+\textbf{Họ nghiệm thứ hai: $\boldsymbol{\alpha_2 = \pi/2 - \alpha_1 + k\pi}$}
+
+Với $0 < \alpha_1 < \pi/2$, điều kiện $0 < \alpha_2 < \pi/2$ trở thành:
+\[ 0 < \frac{\pi}{2} - \alpha_1 + k\pi < \frac{\pi}{2} \]
+Bất phương trình trên tương đương $\dfrac{\alpha_1}{\pi} - \dfrac{1}{2} < k < \dfrac{\alpha_1}{\pi}$. Vì $0 < \dfrac{\alpha_1}{\pi} < \dfrac{1}{2}$ nên khoảng này nằm trong $\left(-\dfrac{1}{2};\ \dfrac{1}{2}\right)$, do đó $k = 0$ ($k = 0$ thỏa mãn vì $\dfrac{\alpha_1}{\pi} - \dfrac{1}{2} < 0 < \dfrac{\alpha_1}{\pi}$). Khi đó: $\alpha_2 = \dfrac{\pi}{2} - \alpha_1$.
+
+Như vậy, trong khoảng $0 < \alpha < \pi/2$, tập nghiệm của phương trình là:
+\[ \alpha_2 \in \left\{ \alpha_1;\ \frac{\pi}{2} - \alpha_1 \right\} \]
+(gồm hai giá trị phân biệt khi $\alpha_1 \neq 45^\circ$ và chỉ một giá trị khi $\alpha_1 = 45^\circ$).
+
+Hai giá trị này trùng nhau khi và chỉ khi:
+\[ \alpha_1 = \frac{\pi}{2} - \alpha_1 \;\Longrightarrow\; \alpha_1 = \frac{\pi}{4} \ \text{ hay }\ \alpha_1 = 45^\circ \]
+Do đó, với mọi góc ném ban đầu khác $45^\circ$, luôn tồn tại duy nhất một góc ném thứ hai $\alpha_2 = 90^\circ - \alpha_1$, khác góc ban đầu nhưng cho cùng tầm xa.
+
+Kiểm chứng: thay $\alpha_2 = \pi/2 - \alpha_1$ vào công thức \eqref{eq:R}, ta được:
+\[ R_2 = \frac{v_0^2\sin(\pi - 2\alpha_1)}{g} = \frac{v_0^2\sin 2\alpha_1}{g} = R_1 \]
+Vậy hai vật có cùng tầm xa với mọi $\alpha_1 \in (0;\ \pi/2)$, không phụ thuộc vào $v_0$ và $g$.
+
+\section{Trường hợp đặc biệt: Góc ném \texorpdfstring{$45^\circ$}{45°}}
+Khi góc ném ban đầu $\alpha_1 = 45^\circ$, thay vào công thức nghiệm, ta được: $\alpha_2 = 90^\circ - 45^\circ = 45^\circ$.
+
+Lúc này, hai góc ném trùng nhau. Do đó, chỉ tồn tại một góc ném duy nhất cho cùng tầm xa trong trường hợp này.
+
+Mặt khác, vì $\sin 2\alpha \le 1$ nên:
+\[ R = \frac{v_0^2\sin 2\alpha}{g} \le \frac{v_0^2}{g} \]
+Dấu bằng xảy ra khi:
+\[ \sin 2\alpha = 1 \;\Longrightarrow\; 2\alpha = 90^\circ \;\Longrightarrow\; \alpha = 45^\circ \qquad (\text{nghiệm duy nhất vì } 0^\circ < 2\alpha < 180^\circ) \]
+Vậy góc ném $45^\circ$ chính là góc cho tầm xa cực đại: $R_{\max} = \dfrac{v_0^2}{g}$.
+
+\section{Bảng phân loại nghiệm và ví dụ}
+
+\begin{table}[H]
+  \centering\setstretch{1}\fs{12}
+  \caption{Phân loại các trường hợp nghiệm của bài toán tìm góc ném $\alpha_2$}
+  \label{tab:phanloai}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{|>{\centering\arraybackslash}m{2.9cm}|>{\centering\arraybackslash}m{3.8cm}|>{\centering\arraybackslash}m{2.5cm}|>{\raggedright\arraybackslash}m{5.0cm}|}
+    \hline
+    \textbf{Góc $\boldsymbol{\alpha_1}$} & \textbf{Góc $\boldsymbol{\alpha_2}$} & \textbf{Quan hệ $\boldsymbol{H_1, H_2}$ và $\boldsymbol{T_1, T_2}$} & \centering\arraybackslash\textbf{Nhận xét ý nghĩa vật lý} \\ \hline
+    $0^\circ < \alpha_1 < 45^\circ$  & $\alpha_2 = 90^\circ - \alpha_1 > 45^\circ$ & $H_1 < H_2$; $T_1 < T_2$ & Vật 2 bay cao hơn và lâu hơn vật 1; hai vật có cùng tầm xa $R$. \\ \hline
+    $\alpha_1 = 45^\circ$            & $\alpha_2 = 45^\circ$                       & $H_1 = H_2$; $T_1 = T_2$ & Hai góc ném trùng nhau; tầm xa đạt giá trị cực đại $R_{\max}$. \\ \hline
+    $45^\circ < \alpha_1 < 90^\circ$ & $\alpha_2 = 90^\circ - \alpha_1 < 45^\circ$ & $H_1 > H_2$; $T_1 > T_2$ & Vật 1 bay cao hơn và lâu hơn vật 2; hai vật có cùng tầm xa $R$. \\ \hline
+  \end{tabular}
+\end{table}
+
+Quan hệ trong Bảng~\ref{tab:phanloai} suy ra từ $H = v_0^2\sin^2\alpha/(2g)$ và $T = 2v_0\sin\alpha/g$: $\sin\alpha$ và $\sin^2\alpha$ đồng biến trên $(0^\circ;\ 90^\circ)$, nên vật có góc ném lớn hơn bay cao hơn và lâu hơn. Để minh họa, ta xét ba ví dụ với các giá trị vận tốc ban đầu và góc ném khác nhau. Với $g = 9{,}81~\mathrm{m/s^2}$, tầm xa, độ cao cực đại và thời gian bay được tính theo các công thức \eqref{eq:T}, \eqref{eq:H}, \eqref{eq:R} ở Chương~\ref{chap:lythuyet}. Kết quả được trình bày trong Bảng~\ref{tab:vidu}.
+
+\begin{table}[H]
+  \centering\setstretch{1}\fs{12}
+  \caption{Ví dụ tính toán tầm xa, độ cao cực đại và thời gian bay của hai vật}
+  \label{tab:vidu}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{|>{\centering\arraybackslash}m{1.8cm}|>{\centering\arraybackslash}m{1.25cm}|>{\centering\arraybackslash}m{1.25cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{1.65cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.4cm}|}
+    \hline
+    \textbf{Vận tốc ban đầu $\boldsymbol{v_0}$ (m/s)} & \textbf{Góc $\boldsymbol{\alpha_1}$} & \textbf{Góc $\boldsymbol{\alpha_2}$} & \textbf{Tầm xa $\boldsymbol{R_1}$ (m)} & \textbf{Tầm xa $\boldsymbol{R_2}$ (m)} & \textbf{$\boldsymbol{H_1 / H_2}$ (m)} & \textbf{$\boldsymbol{T_1 / T_2}$ (s)} \\ \hline
+    20 & $30^\circ$ & $60^\circ$ & 35,31 & 35,31 & 5,10 / 15,29  & 2,04 / 3,53 \\ \hline
+    20 & $45^\circ$ & $45^\circ$ & 40,77 & 40,77 & 10,19 / 10,19 & 2,88 / 2,88 \\ \hline
+    30 & $75^\circ$ & $15^\circ$ & 45,87 & 45,87 & 42,80 / 3,07  & 5,91 / 1,58 \\ \hline
+  \end{tabular}
+\end{table}
+
+\textbf{Nhận xét:} Qua Bảng~\ref{tab:vidu}, có thể thấy trong cả ba ví dụ, hai góc ném phụ nhau đều cho cùng tầm xa ($R_1 = R_2$). Tuy nhiên, độ cao cực đại và thời gian bay của hai vật luôn khác nhau khi $\alpha_1 \neq 45^\circ$ (với $v_0 = 20$~m/s: $H_1 = 5{,}10$~m, $H_2 = 15{,}29$~m; $T_1 = 2{,}04$~s, $T_2 = 3{,}53$~s); riêng trường hợp góc ném $45^\circ$, hai góc trùng nhau và tầm xa đạt giá trị lớn nhất. Về mặt vật lý, $R = v_x \cdot T$ tỉ lệ với $\cos\alpha\cdot\sin\alpha$; khi thay $\alpha$ bằng $90^\circ - \alpha$ thì $\sin\alpha$ và $\cos\alpha$ đổi chỗ cho nhau nên tích không đổi: vật ném thấp có vận tốc ngang lớn nhưng bay trong thời gian ngắn, vật ném cao bay lâu hơn nhưng vận tốc ngang nhỏ hơn.
